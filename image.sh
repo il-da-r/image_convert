@@ -24,7 +24,7 @@ done
         do
 #Обрезаем расширение файла и вставляем новое имя
             IMAGE2=$(echo $IMAGE | sed 's/\..*//')
-            IMAGE2=${IMAGE}"_thumbnail"".jpg"
+            IMAGE2=${IMAGE2}"_thumbnail"".jpg"
 # Проверяем есть ли уже сжатый файл 
             if [ -f $IMAGE2 ]
                 then
