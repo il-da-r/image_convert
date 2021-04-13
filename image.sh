@@ -22,6 +22,11 @@ done
 #Читаем построчно файл
         while IFS= read -r IMAGE
         do
+#  Оставляем расширение файла для проверки      
+            EXT=$(echo $IMAGE | sed s~.*\\\.\\\([^\\\.]*\\\)$~\\1~)
+#Проверяем расширение файла
+         if [[ "$EXT" == "jpg" ]]
+            then
 #Обрезаем расширение файла и вставляем новое имя
             IMAGE2=$(echo $IMAGE | sed 's/\..*//')
             IMAGE2=${IMAGE2}"_thumbnail"".jpg"
@@ -33,5 +38,7 @@ done
 #Конвертируем
             convert -resize $WIDTH $IMAGE $IMAGE2   
             fi
+        fi
         done < $1
+        
 fi
